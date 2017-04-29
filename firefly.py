@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
-def get_tasks(user,password):
+def get_tasks(user,password,auth, tasks):
     from cookielib import CookieJar
     from bs4 import BeautifulSoup
     from urllib import urlencode
     import urllib2
     import re
     FOUNDTASK = False
-    AUTH_URL = 'https://firefly.etoncollege.org.uk/login/login.aspx?prelogin=https%3a%2f%2ffirefly.etoncollege.org.uk%2f'
-    TASK_URL = 'https://firefly.etoncollege.org.uk/set-tasks'
+    AUTH_URL = tasks
+    TASK_URL = auth
     TASKS = []
     DESCRIPTION = []
     FINALDICT = {}

@@ -1,14 +1,15 @@
 #! /usr/bin/env python
 
 def get_tasks(user,password,auth, tasks):
+    print("Fetching Tasks")
     from cookielib import CookieJar
     from bs4 import BeautifulSoup
     from urllib import urlencode
     import urllib2
     import re
     FOUNDTASK = False
-    AUTH_URL = tasks
-    TASK_URL = auth
+    AUTH_URL = auth
+    TASK_URL = tasks
     TASKS = []
     DESCRIPTION = []
     FINALDICT = {}
@@ -39,18 +40,19 @@ def get_tasks(user,password,auth, tasks):
                TASKS.append(a)
     #If there are any tasks
     if (FOUNDTASK):
-        for tag in REFTASKS:
+        for tag in TASKS:
             # Add the text of each element to DESCRIPTION
             DESCRIPTION.append(str(tag.text))
-        for i in range(0, len(REFTASKS)):
+        for i in range(0, len(TASKS)):
             # Form a dictionary of each task numbered as 1,2,3, ect ect  
             # with the six digit number in set-tasks/<6D> (as this can be used to access its description)
             #in an array with the description
-            sigNum = REFTASKS[i]['href']
+            sigNum = TASKS[i]['href']
             sigNum = sigNum.encode('ascii', 'ignore')
             sigNum = sigNum.replace('set-tasks/', '')
             FINALDICT[i] = [sigNum,DESCRIPTION[i]]
     else:
         #if no tasks are found simply return one key and value of 0 and "NOT FOUND so checks can be made if so"
         FINALDICT[0] = "NOT FOUND"
+        print("==>No tasks found")
     return FINALDICT

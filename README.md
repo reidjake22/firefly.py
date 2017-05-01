@@ -10,4 +10,4 @@ it returns a dictionary in form:
  }
  
  the six digit number is associated with that tasks (including that number brings you to its description i.e. set-tasks/<6d>)
- The name is its titel
+ The name is <title>

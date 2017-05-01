@@ -11,3 +11,8 @@ it returns a dictionary in form:
  
  the six digit number is associated with that tasks (including that number brings you to its description i.e. set-tasks/<6d>)
  The name is <title>
+ 
+ This requires several modules: BS4, cookielib, re, urllib, and urllib2 some of which are included in the standard library
+ 
+ 
+ 
